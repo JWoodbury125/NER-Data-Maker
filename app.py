@@ -10,10 +10,13 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for, j
 from wtforms.fields.simple import TextAreaField
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired
+from wtforms import validators
+from wtforms.validators import DataRequired, Regexp
+from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hard to guess string'
-DATABASE = 'listing_database.db'
+# DATABASE = 'listing_database.db'
+Bootstrap(app)
 
 # def get_db():
 #     db = getattr(g, '_database', None)
@@ -23,7 +26,7 @@ DATABASE = 'listing_database.db'
 
 class TextParseForm(FlaskForm):
     text_data = TextAreaField('Text', validators=[DataRequired()])
-    word_data = StringField('word to tag', validators=[DataRequired()])
+    word_data = StringField('word:tag', validators=[DataRequired()])
     tag_data = StringField('tag for word', validators=[DataRequired()])
 
 @app.route('/', methods=['GET', 'POST'])
