@@ -11,6 +11,7 @@ def loc_substr(text, word):
             srt_end_loc = re.search(w, text).span()
             print('poop', srt_end_loc)
             # TODO: create a csv file, or append to csv file
+            
         except AttributeError as ae:
             return w + " not found in text."
     return srt_end_loc, text, word
