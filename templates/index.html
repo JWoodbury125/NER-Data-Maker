@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title> NER label maker </title>
+    </head>
+    <body>
+        <form method="POST" action="{{url_for('find_string')}}">
+            {{form.csrf_token}}
+
+            <p>{{form.text_data.label}}</p>
+            {{form.text_data}}
+
+            <p>{{form.word_data.label}}</p>
+            {{form.word_data}}
+
+            <p>{{form.tag_data.label}}</p>
+            {{form.tag_data}}
+            <input type="submit" value="Enter">
+        </form>
+    </body>
+</html>
