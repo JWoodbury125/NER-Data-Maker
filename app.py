@@ -18,21 +18,17 @@ app.config['SECRET_KEY'] = 'hard to guess string'
 # DATABASE = 'listing_database.db'
 Bootstrap(app)
 
-# def get_db():
-#     db = getattr(g, '_database', None)
-#     if db is None:
-#         db = g._database = sqlite3.connect(DATABASE)
-#     return db
 
 class TextParseForm(FlaskForm):
     text_data = TextAreaField('Text', validators=[DataRequired()])
     word_data = StringField('word:tag', validators=[DataRequired()])
     tag_data = StringField('tag for word', validators=[DataRequired()])
 
+
 @app.route('/', methods=['GET', 'POST'])
 def find_string():
     form = TextParseForm()
-    print('pewpy')
+    print('pew')
     if form.validate_on_submit():
         # send to csv file
         print('in if')
