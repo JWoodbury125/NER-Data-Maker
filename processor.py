@@ -35,11 +35,7 @@ def loc_substr(text_body, usrinpt_strfld):
         except AttributeError as ae:
             return word + " not found in text_body."
     data_tup = (text_body, {'entities':loc_tag_l})
-    # with open('NERdata.p', 'a') as f:
-    #     pickler = pickle.Pickler(f)
-    #     for txt_dat in data_tup:
-    #         pickler.dump(data_tup)
-    # add new data to old data
+    
     nerdat_l.append(data_tup)
     # sync the data
     with open('NERdata.p', 'wb') as nerdat:
@@ -54,4 +50,16 @@ def loc_substr(text_body, usrinpt_strfld):
 # def mkNER_data(data_tup):
 #     if os.path.exists('NERdata.p'):
 #         with open(data_tup, 'rb') as dt:
-            
+def store_temp(listing_text):
+    if os.path.exists('templisting.p'):
+        with open('templisting.p', 'wb') as templist:
+            # templist = listing_text
+            pickle.dump(listing_text, templist)
+
+
+def get_temp():
+    temp_listing = ''
+    with open('templisting.p', 'rb') as listing:
+        # pickle.dump(temp_listing, listing)
+        temp_listing = pickle.load(listing)
+    return temp_listing

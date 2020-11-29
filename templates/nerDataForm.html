@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title> NER label maker </title>
+    </head>
+    <body>
+        <p>{{listing}}</p>
+        <form method="POST" action="{{url_for('find_string')}}">
+            {{prsform.csrf_token}}
+            <p>{{prsform.word_data.label}}</p>
+            {{prsform.word_data}}
+            <input type="submit" value="Enter">
+        </form>
+    </body>
+</html>
